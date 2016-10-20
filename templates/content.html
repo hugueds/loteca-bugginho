@@ -1,0 +1,88 @@
+<body>
+
+	<div class="container-fluid">
+
+		<div ng-controller='MainCtrl'>
+
+			<h1>{{title}}</h1>
+			<div class='image'>
+				<img src='images/bugginho.jpg' />
+			</div>
+			<h2 style="color : #047187">RODADA # <b>{{round}}</b></h2>
+
+			<h3 >ESCOLHA UM JOGO PARA APOSTAR</h3>
+
+			<form class='form-group' ng-submit="generateBet(sel)">
+
+				<label>JOGO SELECIONADO</label>
+				<select ng-change='getTens(sel.game)' ng-model='sel.game'>
+					<option ng-repeat='game in games' value="{{game}}">{{game.name}}</option>
+				</select>
+
+				<label>NUMERO DE DEZENAS</label>
+				<select ng-model='sel.ten' required>
+					<option ng-repeat='ten in tens'>{{ten}}</option>
+				</select>
+
+				<label>NUMERO DE APOSTAS</label>
+				<input type="number" name="amount" ng-model='sel.amount' required>
+				<br><br>
+				<center><button class="btn btn-success btn-lg" type='submit'> GERAR APOSTA</button></center>
+
+			</form>
+
+			<div ng-show='err != ""' class='alert alert-danger err'>
+				<center>{{err}}</center>
+			</div>
+
+			<div class='ten-box'>
+				<div ng-repeat='row in numbers track by $index'>
+					<div class="ten" ng-class='{1 : "mega", 2: "quina", 3: "mania", 4: "facil"}[selectedGame.id]' ng-repeat='n in row track by $index'>{{n}} </div>
+				</div> 			
+			</div>
+
+			<div class='ten-box'>
+				<div ng-repeat='row in viewNumbers track by $index'>
+					<div class="ten" ng-class='{1 : "mega", 2: "quina", 3: "mania", 4: "facil"}[viewId]' ng-repeat='n in row track by $index'>{{n}} </div>
+				</div> 			
+			</div>
+
+			{{modalNumbers}}
+
+
+			<div class='price-box' ng-show="price > 0" >
+				<h3 style="color : #23bc26">VALOR DA ULTIMA APOSTA:  R{{ price | currency }} </h3>
+			</div>
+			<br>
+			<div>
+				<center> <h4>ULTIMAS APOSTAS</h4>	</center>
+				<table class='table'>
+					<th>#</th>
+					<th>RODADA</th>
+					<th>JOGO</th>
+					<th>DEZENAS</th>
+					<th>PREÇO</th>
+					<th>DATA-HORA</th>
+					<th>DEZENAS</th>
+					<th>APOSTAS</th>
+					<th>APAGAR</th>
+
+					<tr ng-hide="$index <= 0" ng-repeat="bet in bets">
+						<td>{{$index}}</td>
+						<td>{{bet.round}}</td>
+						<td>{{bet.game_name}}</td>
+						<td>{{bet.tens}}</td>
+						<td>{{bet.price | currency }}</td>
+						<td>{{bet.datetime | date:"MM/dd/yyyy 'as' h:mma"}}</td>
+						<td>{{bet.bet_amount}}</td>
+						<td><button  ng-click="getViewNumbers(bet)" class='btn btn-primary'>VER</button></td>
+						<td><button class="btn btn-danger" ng-click="deleteBet($index)"> X </button></td>
+					</tr>					
+
+				</table>
+			</div>
+
+		</div>
+
+	</div>
+

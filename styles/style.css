@@ -1,0 +1,82 @@
+* body {
+	background-color: #ffb028;
+	margin : 0 auto;
+}
+
+h1{
+	text-align: center;
+}
+
+h2{
+	text-align: center;
+}
+
+h3 {	
+	text-align: center;
+}
+
+th{
+	background-color: black;
+	color: white;
+	font: bold;
+}
+
+td{
+	background-color: white;
+}
+
+form {
+	text-align: center;
+}
+.image {
+	text-align: center;
+}
+
+.ten {
+	background: radial-gradient( 5px -9px, circle, white 8%, red 26px );
+	display: inline-block;
+	border-radius: 50%;
+	border : 1px black solid;	
+	width: 50px;
+	height: 50px;
+	color : white;
+	font: bold 20px Helvetica, Verdana, Tahoma;
+	box-shadow: 1px 1px 1px black;
+	padding: 10px 0px 0px 10px;
+	margin : 10px;
+}
+
+.ten-box{
+	text-align: center;
+	margin: 0 auto;
+}
+
+.price-box{
+	text-align: center;	
+}
+
+
+
+.mega{
+	background-color: #09bf1b;
+}
+
+.quina{
+	background-color: #260cb7;
+}
+
+.mania {
+	background-color: #bf8209;
+}
+
+.facil {
+	background-color: #8b09bf;
+}
+
+.err{	
+	margin: 0 auto;
+	width: 30%;
+}
+
+
+
