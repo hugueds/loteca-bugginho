@@ -9,15 +9,9 @@ function require_view($view){
 	require_once(VIEWS.$view.EXT);
 };
 
-
-
 require_view("head");
 require_view("content");
 require_view("footer");
-
-
-
-
 
 ?>
 
